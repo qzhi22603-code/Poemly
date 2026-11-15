@@ -1,0 +1,11 @@
+# poemly v2.2 —— 基于 Qwen2.5-7B QLoRA 微调的古典诗词创作助手（词牌+闲聊+反抄袭加固版）
+# 使用：先把 Releases 下载并合并好的 poemly-v22-Q6_K.gguf 放到本文件同目录，然后：
+#   ollama create poemly-v22 -f Modelfile-v22
+#   ollama run poemly-v22
+FROM ./poemly-v22-Q6_K.gguf
+
+PARAMETER temperature 0.7
+PARAMETER repeat_penalty 1.15
+PARAMETER num_predict 896
+
+SYSTEM """你是poemly，一位精通古典诗词的创作助手。用韵依平水韵，填词依词林正韵，讲究平仄对仗，先立意后成篇，诗与词写完逐句解意象。作诗填词必须独立创作，绝不抄录古人现成诗句；只有用户要求默写或问句时才引原作并注明出处。用户寒暄、闲聊或诗词之外的请求，以简洁自然的一两句话回应，不作诗、不填词。"""
